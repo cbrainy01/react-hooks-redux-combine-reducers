@@ -1,4 +1,43 @@
 // Action Creators
+export function addBook(book) {
+  return {
+    type: "books/add",
+    payload: book,
+  }
+}
+
+export function removeBook(id) {
+  return {
+    type: "books/remove",
+    payload: id,
+  }
+}
+
+// Books Reducer
+const initialState = []
+
+export default function booksReducer(state = initialState, action) {
+  switch(action.type) {
+    case "books/add":
+      return [...state, action.payload]
+    case "books/remove":
+      const updatedBooks = state.filter( (book) => book.id !== action.payload )
+      return updatedBooks 
+    default: return state;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 export const addAuthor = (author) => {
   return {
     type: "authors/add",
